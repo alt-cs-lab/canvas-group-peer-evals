@@ -1,0 +1,71 @@
+
+<form method="post" action="submit-evaluation">
+  <input type="hidden" name="id" value="<%= assignedEvaluation.id %>"/>
+  <input type="hidden" name="evaluatee_canvas_id" value="<%= assignedEvaluation.evaluatee_canvas_id %>"/>
+  <div class="card border-warning" style="margin-bottom: 2rem;">
+    <div class="card-body">
+      <h5 class="card-title">Evaluation for <%= assignedEvaluation.evaluatee_name %></h5>
+      <hr/>
+      <div class="form-group">
+        <label for="discussion_score">
+          Please rate your team member on: 
+          <b>Participates in group discussion</b>
+        </label>
+        <input name="discussion_score" type="number" min="0" max="10" step="1" value="5" class="form-control form-control-lg"/>
+      </div> 
+      <div class="form-group">
+        <label for="on_task_score">
+          Please rate your team member on: 
+          <b>Helped keep group focused and on-task</b>
+        </label>
+        <input name="on_task_score" type="number" min="0" max="10" step="1" value="5" class="form-control form-control-lg"/>
+      </div> 
+      <div class="form-group">
+        <label for="ideas_score">
+          Please rate your team member on: 
+          <b>Contributed useful ideas</b>
+        </label>
+        <input name="ideas_score" type="number" min="0" max="10" step="1" value="5" class="form-control form-control-lg"/>
+      </div> 
+      <div class="form-group">
+        <label for="work_quality_score">
+          Please rate your team member on: 
+          <b>Quality of work done</b>
+        </label>
+        <input name="work_quality_score" type="number" min="0" max="10" step="1" value="5" class="form-control form-control-lg"/>
+      </div> 
+      <div class="form-group">
+        <label for="work_quantity_score">
+          Please rate your team member on: 
+          <b>Quantity of work done</b>
+        </label>
+        <input name="work_quantity_score" type="number" min="0" max="10" step="1" value="5" class="form-control form-control-lg"/>
+      </div> 
+      <div class="form-group">
+        <label for="communication_score">
+          Please rate your team member on: 
+          <b>Quantity of work done</b>
+        </label>
+        <input name="communication_score" type="number" min="0" max="10" step="1" value="5" class="form-control form-control-lg"/>
+      </div> 
+      <div class="form-group">
+        <label for="advice_for_evaluatee">
+          Is there any advice you would like to share with <%= assignedEvaluation.evaluatee_name %>?
+          <span class="fw-light">This will be shared with them anonymously</span>
+        </label> 
+        <textarea name="advice_for_evaluatee" width="100%" height="30px" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="notes_for_instructor">
+          Is there any information you would like to share about your teammate to the instructor?
+          <span class="fw-light">This will not be shared</span>
+        </label> 
+        <textarea name="notes_for_instructor" width="100%" height="30px" class="form-control"></textarea>
+      </div>
+      <hr/>
+      <div class="form-group">
+        <input type="submit" value="Save Evaluation" class="btn btn-warning"/>
+      </div>
+    </div>
+  </div>
+</form>

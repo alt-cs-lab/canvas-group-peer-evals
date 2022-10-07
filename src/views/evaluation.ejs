@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <title>Group Peer Evaluations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Group Peer Evaluations</h1>
+      
+      <% if(!assignedEvaluations || assignedEvaluations.length === 0) { %>
+        <div class="alert alert-danger">
+          You don't have any assigned peer reviews. If you 
+          believe this is a mistake, you should contact 
+          your instructor.
+        </div>
+      <% } %>
+
+      <% if(evaluationSummary.completed) { %>
+        <%- include('partials/evaluation-summary', {evaluationSummary}); %> 
+      <% } %>
+      
+      <% if(assignedEvaluations.reduce((complete, eval) => complete && eval.completed, true)) { %>
+        // evaluations are completed 
+      <% } else { %>
+        
+        <p>
+          <%= name %>, please complete the following peer evaluations for 
+          <i>each member</i> of your group. For the ratings, a <b>10</b> 
+          corresponds to the highest possible rating, and a <b>1</b> the lowest.
+        </p>
+        <p>
+          Note that a score of 8-10 will not impact your team member's grade,
+          so consider rating them at an 8 or 9 if you are satisfied with
+          their performance but they still have room to improve. 
+        </p>
+        
+        <p>
+          Once you have submitted all your evaluations and your peers
+          have evaluated you, you will be able to view a summary 
+          of their evaluations of you on this page.
+        </p>
+      <% } %>
+
+      <% assignedEvaluations.forEach(function(assignedEvaluation){ %>      
+        <% if(assignedEvaluation.completed) { %>
+            <%- include('partials/complete-evaluation', {assignedEvaluation}); %>
+        <% } else { %>
+            <%- include('partials/incomplete-evaluation', {assignedEvaluation}); %> 
+        <% } %>
+      <% }); %>
+    </div>
+
+    <script>
+      Array.prototype.forEach.call(document.getElementsByTagName('form'), function(form){
+        form.addEventListener('submit', function(event){
+          console.log(new FormData(this));
+          event.preventDefault();
+          var data = this;
+          fetch(data.getAttribute('action'), {
+            method: data.getAttribute('method'),
+            body: new URLSearchParams(new FormData(data))
+          })
+          .then(res => res.text())
+          .then(html => this.innerHTML = html);
+        });
+      });
+    </script>
+  </body>  
+</html>

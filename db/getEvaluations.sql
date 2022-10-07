@@ -1,0 +1,1 @@
+SELECT * FROM evaluations WHERE canvas_assignment_id = $1 LIMIT 1;

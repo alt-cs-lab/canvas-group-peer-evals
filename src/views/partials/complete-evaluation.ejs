@@ -1,0 +1,41 @@
+<div class="card border-success" style="margin-bottom: 2rem;">
+  <div class="card-body">
+    <h5 class="card-title">Evaluation for <%= assignedEvaluation.evaluatee_name %></h5>
+    <hr/>
+    <div>
+      <p>
+        Participates in group discussion:
+        <b><%= assignedEvaluation.discussion_score %></b>
+      </p>
+      <p>
+        Helped keep group focused and on-task:
+        <b><%= assignedEvaluation.on_task_score %></b>
+      </p> 
+      <p>
+        Contributed useful ideas:
+        <b><%= assignedEvaluation.ideas_score %></b>
+      </p>
+      <p>
+        Quality of work done:
+        <b><%= assignedEvaluation.work_quality_score %></b>
+      </p> 
+      <p>
+        Quantity of work done:
+        <b><%= assignedEvaluation.work_quality_score %></b>
+      </p> 
+      <p>
+        Quantity of work done:
+        <b><%= assignedEvaluation.communication_score %></b>
+      </p> 
+      <p>
+        Is there any advice you would like to share with <%= assignedEvaluation.evaluatee_name %>?
+        <blockquote><%= assignedEvaluation.advice_for_evaluatee %></blockquote>
+      </p> 
+      <p>
+        Is there any information you would like to share about your teammate to the instructor?
+        <blockquote><%= assignedEvaluation.notes_for_instructor %></blockquote>
+      </p> 
+    </div>
+    
+  </div>
+</div>

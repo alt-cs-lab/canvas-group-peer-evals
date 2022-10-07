@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html>
+  <head>
+    <title>Group Peer Evaluation Assignment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Group Peer Evaluation Assignment</h1>
+
+      <p>
+        Select one of the Group Categories from the list below.  
+        The students will be tasked with evaluating the other 
+        students in the group.
+      </p>
+
+      <form method="POST" action="/assign-evaluations">
+        <input type="hidden" name="course_id" value="<%= courseId %>"/>
+        <input type="hidden" name="assignment_id" value="<%= assignmentId %>"/>
+        <input type="hidden" name="group_category_name" id="gcn" />
+        <div class="mb-3">
+          <label for="group_category_id">Group Category:</label>
+          <select name="group_category_id" id="gc">
+            <% groupCategories.forEach(function(category){ %>          
+              <option value="<%= category.id %>"%>><%= category.name %></option>
+            <% }); %>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Assign Evaluation"/>
+      </form>
+    </div>
+
+    <script>
+      const gc = document.getElementById("gc");
+      const gcn = document.getElementById("gcn");
+      gc.onchange = function(){
+        gcn.value = gc.options[gc.selectedIndex].text;
+      }
+      gcn.value = gc.options[gc.selectedIndex].text;
+    </script>
+        
+  </body>
+</html>

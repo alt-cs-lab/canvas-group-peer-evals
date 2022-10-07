@@ -1,0 +1,1 @@
+INSERT INTO evaluation_summaries (evaluation_id, evaluatee_canvas_id, evaluatee_name, discussion_score, on_task_score, ideas_score, work_quality_score, work_quantity_score, communication_score, advice) VALUES (6, 214961, 'Nathan Bean', 9.3, 9.4, 10, 10, 9.8, 10, 'Suck less');

@@ -1,0 +1,25 @@
+{
+  "name": "group-peer-evals",
+  "version": "1.0.0",
+  "description": "A Canvas LTI Tool for conducting group peer evaluations.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nathan H. Bean",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.2",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.3",
+    "ims-lti": "^3.0.2",
+    "massive": "^6.10.2",
+    "oauth-1.0a": "^2.2.6",
+    "oauth-percent-encode": "^0.1.2",
+    "passport-http-oauth": "^0.1.3"
+  }
+}

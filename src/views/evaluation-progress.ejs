@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <title>Group Peer Evaluation Assignment Progress</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Group Peer Evaluation Assignment Progress</h1>
+      <table class="table">
+        <tr>
+          <th>Evaluator</th>
+          <th>Evaluatee</th>
+          <th>Completed</th>        
+        </tr>
+        <% assignedEvaluations.forEach(function(assignedEvaluation){ %>          
+          <tr>
+            <td><%= assignedEvaluation.evaluator_name %></td>
+            <td><%= assignedEvaluation.evaluatee_name %></td>
+            <td><%= assignedEvaluation.completed %></td>
+          </tr>
+        <% }); %>
+      </table>
+    </div>
+  </body>  
+</html>
