@@ -10,7 +10,7 @@ var app = express();
 
 (async() => {
 
-
+  // Set up the database
   const db = await massive({
     host: process.env.DB_HOST || '127.0.0.1',
     port: process.env.DB_PORT || 5432,
@@ -22,8 +22,18 @@ var app = express();
   await db.init();
   app.set('db', db);
 
+  // Set up the proxy
+  var trustProxy = process.env.TRUST_PROXY; 
+  if(trustProxy) {
+    // The 'trust proxy' setting can either be a boolean
+    // (blanket trust any proxy) or a specific ip address
+    if(trustProxy === "true") app.set('trust proxy', true);
+    else app.set('trust proxy', trustProxy);
+  }
+
+  // Set up sessions
   app.use(session({
-    secret: 'saxophonecat',
+    secret: process.env.SESSION_KEY || 'saxophonecat',
     resave: false,
     saveUninitialized: true,
     cookie: {secure: true}
