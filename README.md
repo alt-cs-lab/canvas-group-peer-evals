@@ -2,7 +2,7 @@ A Canvas LTI tool for offering assignments to conduct peer evaluations on group 
 
 ### Environment Variables
 **CANVAS_TOKEN** - the Auth token for communicating with the Canvas API
-**CLIENT_KEY** - the OAuth client key shared with Canvas
+**CONSUMER_KEY** - the OAuth consumer key shared with Canvas
 **SHARED_SECRET** - the OAuth shared secret with Canvas
 **DB_NAME** - the database name
 **DB_USER** - the database user 

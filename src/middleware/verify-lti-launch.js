@@ -3,7 +3,7 @@ const lti = require('ims-lti');
 module.exports = (req, res, next) => {
 
   // Should have oauth_consumer_key 
-  const key = process.env.LTI_CLIENT_KEY;
+  const key = process.env.LTI_CONSUMER_KEY;
   const secret = process.env.LTI_SHARED_SECRET;
 
   // Check validity of lti launch request
