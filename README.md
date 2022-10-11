@@ -1,6 +1,7 @@
 A Canvas LTI tool for offering assignments to conduct peer evaluations on group members.
 
 ### Environment Variables
+**CANVAS_HOST** - the canvas hostname 
 **CANVAS_TOKEN** - the Auth token for communicating with the Canvas API
 **CONSUMER_KEY** - the OAuth consumer key shared with Canvas
 **SHARED_SECRET** - the OAuth shared secret with Canvas
