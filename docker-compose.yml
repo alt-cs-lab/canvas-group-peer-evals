@@ -10,7 +10,7 @@ services:
       DB_NAME: group_peer_evals_db
       DB_USER: user
       DB_PASSWORD: pass
-      DATABASE_URL: postgres://user:pass@postgres:5432/group_peer_evals_db 
+      # DATABASE_URL: postgres://user:pass@postgres:5432/group_peer_evals_db 
       LTI_CONSUMER_KEY: foo
       LTI_SHARED_SECRET: bar
       CANVAS_ACCESS_TOKEN: 1726~UacZkl2ndcdgLx9VXUZkWk8L3i3DjupW2NvYCbJD0L8wltBkPmCgRVp9vsRfm4gc
@@ -18,7 +18,7 @@ services:
       PORT: 3000
     ports:
       - "3000:3000"
-    command: npm start 
+    # command: npm start 
     volumes:
       - .:/app/
       - /app/node_modules
