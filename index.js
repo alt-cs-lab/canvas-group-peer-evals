@@ -49,6 +49,8 @@ var app = express();
   app.post('/', require('./src/middleware/verify-lti-launch'), require('./src/routes/lti-launch.js'));
   app.post('/assign-evaluations', require('./src/routes/assign-evaluations'));
   app.post('/submit-evaluation', require('./src/routes/submit-evaluation'));
+  
+  app.get('/generate-summaries/:id', require('./src/routes/generate-summaries'));
 
   app.listen(3000, () => console.log("Listening on port 3000"));
 

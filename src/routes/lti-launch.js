@@ -40,7 +40,7 @@ async function launchInstructor(req, res) {
     const assignedEvaluations = await db.assigned_evaluations.find({
       evaluation_id: evaluation.id
     });
-    res.render('evaluation-progress', {assignedEvaluations});
+    res.render('evaluation-progress', {evaluation, assignedEvaluations});
   } else {
     // We need the user to select a group category
     const groupCategories = await canvas.getGroupCategories(courseId);
@@ -60,7 +60,7 @@ async function launchLearner(req, res) {
   const assignmentId = req.body.custom_canvas_assignment_id;
   const resultSourcedid = req.body.lis_result_sourcedid;
   const outcomeServiceUrl = req.body.lis_outcome_service_url;
-console.log('body', req.body);
+  
   // get the evaluation
   const db = req.app.get('db');
   const evaluation = await db.evaluations.findOne({canvas_assignment_id: assignmentId});
