@@ -70,13 +70,17 @@ async function createEvaluationSummary(db, evaluations) {
   if(!evaluationSummary) return;
 
   // Submit the finalized grade
-  await submitGrade(grade, evaluationSummary.result_sourcedid, evaluationSummary.grade_passback_url);
-
-  // Save the updates to the summary in the database
-  summary.id = evaluationSummary.id;
-  summary.completed = true;
-  await db.evaluation_summary.save(summary);
-
+  try {
+    await submitGrade(grade, evaluationSummary.result_sourcedid, evaluationSummary.grade_passback_url);
+    // Save the updates to the summary in the database
+    summary.id = evaluationSummary.id;
+    summary.completed = true;
+    await db.evaluation_summary.save(summary);
+  } catch (exception) {
+    console.error("Unable to submit grade");
+    console.error(evaluationSummary);
+    console.error(exception);
+  }
 }
 
 function scoreToPenalty(score){
@@ -132,5 +136,5 @@ async function submitGrade(grade, resultSourcedid, gradePassbackUrl){
     data: xml,
   });
 
-  console.log(response);
+
 }
