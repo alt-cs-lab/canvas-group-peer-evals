@@ -124,11 +124,13 @@ async function submitGrade(grade, resultSourcedid, gradePassbackUrl){
     queryParams: {} // if you need to post additional query params, do it here
   });
 
-  await axios.request({
+  var response = await axios.request({
     url: gradePassbackUrl,
     params: signature.params,
     method: 'post',
     headers: {'Content-Type': 'application/xml'},
     data: xml,
   });
+
+  console.log(response);
 }
