@@ -1,4 +1,5 @@
 const axios = require('axios');
+const OAuth1Signature = require('oauth1-signature');
 
 module.exports = async function generateSummaries(req, res) {
   const db = req.app.get('db');
