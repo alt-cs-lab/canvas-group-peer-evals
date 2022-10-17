@@ -125,7 +125,7 @@ async function submitGrade(grade, resultSourcedid, gradePassbackUrl){
   });
 
   await axios.request({
-    url: lis_outcome_service_url,
+    url: gradePassbackUrl,
     params: signature.params,
     method: 'post',
     headers: {'Content-Type': 'application/xml'},
