@@ -18,6 +18,7 @@
     "express-session": "^1.17.3",
     "ims-lti": "^3.0.2",
     "massive": "^6.10.2",
-    "oauth-1.0a": "^2.2.6"
+    "oauth-1.0a": "^2.2.6",
+    "oauth1-signature": "^1.0.5"
   }
 }
