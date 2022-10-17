@@ -1,5 +1,5 @@
 const axios = require('axios');
-const createEvaluationSummary = require('../services/grading');
+const {createEvaluationSummary} = require('../services/grading');
 
 async function submitEvaluation(req, res) {
   const db = req.app.get('db');

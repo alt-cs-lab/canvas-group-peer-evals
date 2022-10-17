@@ -1,4 +1,4 @@
-const createEvaluationSummary = require('../services/grading');
+const {createEvaluationSummary} = require('../services/grading');
 
 module.exports = async function generateSummaries(req, res) {
   const db = req.app.get('db');
