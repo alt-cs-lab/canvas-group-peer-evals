@@ -46,6 +46,14 @@ async function createEvaluationSummary(db, evaluations) {
   grade += scoreToPenalty(communication_score);
   if(grade < 0) grade = 0;
 
+  // Retrieve the summary from the database
+  const evaluationSummary = await db.evaluation_summaries.findOne({
+    evaluatee_canvas_id: evaluatee_canvas_id,
+    evaluation_id: evaluation_id
+  });
+
+  if(!evaluationSummary) return;
+
   // Create the summary data
   var summary = {
     evaluation_id,
@@ -60,14 +68,6 @@ async function createEvaluationSummary(db, evaluations) {
     advice_for_evaluatee,
     notes_for_instructor
   };
-
-  // Retrieve the summary from the database
-  const evaluationSummary = await db.evaluation_summaries.findOne({
-    evaluatee_canvas_id: evaluatee_canvas_id,
-    evaluation_id: evaluation_id
-  });
-
-  if(!evaluationSummary) return;
 
   // Submit the finalized grade
   try {
@@ -110,7 +110,7 @@ async function submitGrade(grade, resultSourcedid, gradePassbackUrl){
             <result>
               <resultScore>
                 <language>en</language>
-                <textString>${grade}</textString>
+                <textString>${grade/100}</textString>
               </resultScore>
             </result>
           </resultRecord>
