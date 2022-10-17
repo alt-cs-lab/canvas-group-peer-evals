@@ -69,7 +69,7 @@ async function createEvaluationSummary(db, evaluations) {
   if(!evaluationSummary) return;
 
   // Submit the finalized grade
-  submitGrade(grade, evaluationSummary.result_sourcedid, evaluationSummary.grade_passback_url);
+  await submitGrade(grade, evaluationSummary.result_sourcedid, evaluationSummary.grade_passback_url);
 
   // Save the updates to the summary in the database
   summary.id = evaluationSummary.id;
