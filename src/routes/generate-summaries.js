@@ -78,7 +78,7 @@ async function createEvaluationSummary(db, evaluations) {
     await db.evaluation_summary.save(summary);
   } catch (exception) {
     console.error("Unable to submit grade");
-    console.error(evaluationSummary);
+    console.error(summary);
     console.error(exception);
   }
 }
