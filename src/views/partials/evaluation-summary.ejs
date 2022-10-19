@@ -5,27 +5,27 @@
     <div>
       <p>
         Participates in group discussion:
-        <b><%= evaluationSummary.discussion_score %></b>
+        <b><%= evaluationSummary.discussion_score.toFixed(1) %></b>
       </p>
       <p>
         Helped keep group focused and on-task:
-        <b><%= evaluationSummary.on_task_score.toFixed(2) %></b>
+        <b><%= evaluationSummary.on_task_score.toFixed(1) %></b>
       </p> 
       <p>
         Contributed useful ideas:
-        <b><%= evaluationSummary.ideas_score.toFixed(2) %></b>
+        <b><%= evaluationSummary.ideas_score.toFixed(1) %></b>
       </p>
       <p>
         Quality of work done:
-        <b><%= evaluationSummary.work_quality_score.toFixed(2) %></b>
+        <b><%= evaluationSummary.work_quality_score.toFixed(1) %></b>
       </p> 
       <p>
         Quantity of work done:
-        <b><%= evaluationSummary.work_quality_score.toFixed(2) %></b>
+        <b><%= evaluationSummary.work_quality_score.toFixed(1) %></b>
       </p> 
       <p>
         Effectiveness communicating:
-        <b><%= evaluationSummary.communication_score %></b>
+        <b><%= evaluationSummary.communication_score.toFixed(1) %></b>
       </p> 
       <p>
         Is there any advice you would like to share with <%= evaluationSummary.evaluatee_name %>?
