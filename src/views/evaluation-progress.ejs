@@ -9,6 +9,8 @@
   <body>
     <div class="container">
       
+      <h1>Group Peer Evaluation Assignment Progress</h1>
+      
       <% students.forEach(function(student){ %>
         <div>
           <h2><%= student.sortable_name %></h2>
@@ -43,25 +45,6 @@
       <% }); %>
       </ul>
 
-      <h1>Group Peer Evaluation Assignment Progress</h1>
-      <table class="table">
-        <tr>
-          <th>Evaluator</th>
-          <th>Evaluatee</th>
-          <th>Completed</th>        
-        </tr>
-        <% assignedEvaluations.forEach(function(assignedEvaluation){ %>          
-          <tr class="<%= assignedEvaluation.completed ? 'table-success' : 'table-warning' %>">
-            <td><%= assignedEvaluation.evaluator_name %></td>
-            <td>
-              <a href="/evaluations/<%= assignedEvaluation.id %>">
-                <%= assignedEvaluation.evaluatee_name %>
-              </a>
-            </td>
-            <td><%= assignedEvaluation.completed ? 'Yes' : 'No' %></td>
-          </tr>
-        <% }); %>
-      </table>
       <a href="generate-summaries/<%= evaluation.id %>" class="btn btn-secondary">Generate Summaries</a>
     </div>
   </body>  
