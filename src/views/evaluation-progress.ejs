@@ -15,20 +15,23 @@
           <% if(student.assignedEvaluations) { %>
             <% student.assignedEvaluations.forEach(function(assignedEvaluation){ %>
               <div class="d-flex justify-content-between alert alert-<%= assignedEvaluation.completed ? 'success' : 'warning' %>">
-                <%= assignedEvaluation.evaluatee_name %>
-                <% if(assignedEvaluation.completed) { %> 
-                  <div>
-                    [
-                    <%= assignedEvaluation.discussion_score %>,
-                    <%= assignedEvaluation.on_task_score %>,
-                    <%= assignedEvaluation.ideas_score %>,
-                    <%= assignedEvaluation.work_quality_score %>,
-                    <%= assignedEvaluation.work_quantity_score %>,
-                    <%= assignedEvaluation.communication_score %>
-                    ]
-                  </div>
-                  <%= new Date(assignedEvaluation.submitted_at).toLocaleDateString() %>
-                <% } %>
+                <div class="d-flex justify-content-between">
+                  <%= assignedEvaluation.evaluatee_name %>
+                  <% if(assignedEvaluation.completed) { %> 
+                    <div>
+                      [
+                      <%= assignedEvaluation.discussion_score %>,
+                      <%= assignedEvaluation.on_task_score %>,
+                      <%= assignedEvaluation.ideas_score %>,
+                      <%= assignedEvaluation.work_quality_score %>,
+                      <%= assignedEvaluation.work_quantity_score %>,
+                      <%= assignedEvaluation.communication_score %>
+                      ]
+                    </div>
+                    <%= new Date(assignedEvaluation.submitted_at).toLocaleDateString() %>
+                  <% } %>
+                </div>
+                <%= assignedEvaluation.notes_for_instructor %>
               </div>
             <% }); %>
           <% } else { %>
