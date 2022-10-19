@@ -16,7 +16,7 @@
           <h2><%= student.sortable_name %></h2>
           <% if(student.assignedEvaluations) { %>
             <% student.assignedEvaluations.forEach(function(assignedEvaluation){ %>
-              <div class="d-flex justify-content-between alert alert-<%= assignedEvaluation.completed ? 'success' : 'warning' %>">
+              <div class="alert alert-<%= assignedEvaluation.completed ? 'success' : 'warning' %>">
                 <div class="d-flex justify-content-between">
                   <%= assignedEvaluation.evaluatee_name %>
                   <% if(assignedEvaluation.completed) { %> 
