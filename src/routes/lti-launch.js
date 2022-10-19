@@ -57,7 +57,7 @@ async function launchInstructor(req, res) {
       evaluation_id: evaluation.id
     });
     evaluationSummaries.forEach(es => {
-      studentMap[ae.evaluatee_canvas_id].evaluationSummary = es;
+      studentMap[es.evaluatee_canvas_id].evaluationSummary = es;
     });
 
     students = Object.values(studentMap);
