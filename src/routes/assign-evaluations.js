@@ -42,7 +42,7 @@ async function assignEvaluations(req, res) {
       tiLevel: db.pgp.txMode.isolationLevel.serializable
     })
   });
-  res.render('evaluation-progress', {assignedEvaluations});
+  res.send('Evaluations Assigned Successfully!');
 }
 
 module.exports = assignEvaluations;

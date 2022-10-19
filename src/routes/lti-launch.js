@@ -36,11 +36,33 @@ async function launchInstructor(req, res) {
   const evaluation = await db.evaluations.findOne({canvas_assignment_id: req.body.custom_canvas_assignment_id});
   
   if(evaluation) {
+    // Get all students in the course 
+    var students = await canvas.getCourseStudents(courseId);
+    var studentMap = {};
+    students.forEach(student => {
+      student.assignedEvaluations = [];
+      studentMap[student.id] = student;
+    });
+
     // We want to display student progress
     const assignedEvaluations = await db.assigned_evaluations.find({
       evaluation_id: evaluation.id
+    })
+    assignedEvaluations.forEach(ae => {
+      studentMap[ae.evaluator_canvas_id].assignedEvaluations.push(ae);
     });
-    res.render('evaluation-progress', {evaluation, assignedEvaluations});
+
+    // And provide final evaluations (when available)
+    const evaluationSummaries = await db.evaluation_summaries.find({
+      evaluation_id: evaluation.id
+    });
+    evaluationSummaries.forEach(es => {
+      studentMap[ae.evaluatee_canvas_id].evaluationSummary = es;
+    });
+
+    students = Object.values(studentMap);
+
+    res.render('evaluation-progress', {evaluation, assignedEvaluations, students});
   } else {
     // We need the user to select a group category
     const groupCategories = await canvas.getGroupCategories(courseId);

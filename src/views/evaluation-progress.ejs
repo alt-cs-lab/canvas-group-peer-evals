@@ -8,6 +8,25 @@
   </head>
   <body>
     <div class="container">
+      
+      <% students.forEach(function(student){ %>
+        <div>
+          <h2><%= student.sortable_name %></h2>
+          <% if(student.evaluationSummary) { %>
+            <%- include('partials/evaluation-summary', {evaluationSummary: student.evaluationSummary}); %>
+          <% } %>
+          <% if(student.assignedEvaluations) { %>
+            <% student.assignedEvaluations.forEach(function(assignedEvaluation){ %>
+              <div class="alert alert-<%= assignedEvaluation.completed ? 'success' : 'warning' %>">
+                <%= assignedEvaluation.evaluatee_name %>
+              </div>
+            <% }); %>
+          <% } else { %>
+            <div class="alert alert-danger">No assigned evaluations</div>
+          <% } %>
+      <% }); %>
+      </ul>
+
       <h1>Group Peer Evaluation Assignment Progress</h1>
       <table class="table">
         <tr>

@@ -8,6 +8,13 @@ const opts = {
   }
 }
 
+async function getCourseStudents(courseId) {
+  const courseStudentsUrl = `https://${canvasHostname}/api/v1/courses/${courseId}/users?per_page=100&enrollment_type=student`;
+  const response = await axios.get(courseStudentsUrl, opts);
+  const students = response.data;
+  return students;
+}
+
 async function getGroupCategories(courseId) {
   const groupCategoryUrl = `https://${canvasHostname}/api/v1/courses/${courseId}/group_categories`;
   const response = await axios.get(groupCategoryUrl, opts);
@@ -27,4 +34,4 @@ async function getGroupsInGroupCategory(groupCategoryId) {
   return groups;
 }
 
-module.exports = {getGroupCategories, getGroupsInGroupCategory};
+module.exports = {getCourseStudents, getGroupCategories, getGroupsInGroupCategory};
