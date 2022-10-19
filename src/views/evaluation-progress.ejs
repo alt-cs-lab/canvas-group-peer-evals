@@ -12,18 +12,28 @@
       <% students.forEach(function(student){ %>
         <div>
           <h2><%= student.sortable_name %></h2>
-          <% if(student.evaluationSummary) { %>
-            <%- include('partials/evaluation-summary', {evaluationSummary: student.evaluationSummary}); %>
-          <% } %>
           <% if(student.assignedEvaluations) { %>
             <% student.assignedEvaluations.forEach(function(assignedEvaluation){ %>
-              <div class="alert alert-<%= assignedEvaluation.completed ? 'success' : 'warning' %>">
+              <div class="d-flex justify-content-between alert alert-<%= assignedEvaluation.completed ? 'success' : 'warning' %>">
                 <%= assignedEvaluation.evaluatee_name %>
-                <%= assignedEvaluation.submittedAt %>
+                <div>
+                  [
+                  <%= assignedEvaluation.discussion_score %>,
+                  <%= assignedEvaluation.on_task_score %>,
+                  <%= assignedEvaluation.ideas_score %>,
+                  <%= assignedEvaluation.work_quality_score %>,
+                  <%= assignedEvaluation.work_quantity_score %>,
+                  <%= assingedEvaluation.communication_score %>
+                  ]
+                </div>
+                <%= assignedEvaluation.submitted_at %>
               </div>
             <% }); %>
           <% } else { %>
-            <div class="alert alert-danger">No assigned evaluations</div>
+            <div class="alert alert-danger">No assigned evaluations!</div>
+          <% } %>
+          <% if(student.evaluationSummary && student.evaluationSummary.completed) { %>
+            <%- include('partials/evaluation-summary', {evaluationSummary: student.evaluationSummary}); %>
           <% } %>
       <% }); %>
       </ul>
