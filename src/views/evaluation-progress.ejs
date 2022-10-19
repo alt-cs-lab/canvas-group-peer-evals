@@ -19,6 +19,7 @@
             <% student.assignedEvaluations.forEach(function(assignedEvaluation){ %>
               <div class="alert alert-<%= assignedEvaluation.completed ? 'success' : 'warning' %>">
                 <%= assignedEvaluation.evaluatee_name %>
+                <%= assignedEvaluation.submittedAt %>
               </div>
             <% }); %>
           <% } else { %>
