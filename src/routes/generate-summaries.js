@@ -14,8 +14,8 @@ module.exports = async function generateSummaries(req, res) {
   });
 
   for(var group of Object.values(groups)) {
-    if(group.reduce((flag, eval) => flag && eval.completed, true)) 
-      createEvaluationSummary(db, group);
+    const completed = group.filter(eval => eval.completed); 
+    createEvaluationSummary(db, completed);
   }
   
   res.send("OK")
