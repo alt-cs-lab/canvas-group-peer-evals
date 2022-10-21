@@ -4,7 +4,7 @@ const OAuth1Signature = require('oauth1-signature');
 async function createEvaluationSummary(db, evaluations) {
   const evaluation_id = evaluations[0].evaluation_id;
   const evaluatee_canvas_id = evaluations[0].evaluatee_canvas_id;
-  const evaluatee_name = evaluations[0].name;
+  const evaluatee_name = evaluations[0].evaluatee_name;
 
   const discussion_score = evaluations.reduce((acc, eval) => acc + eval.discussion_score, 0) / evaluations.length;
   const on_task_score = evaluations.reduce((acc, eval) => acc + eval.on_task_score, 0) / evaluations.length;
