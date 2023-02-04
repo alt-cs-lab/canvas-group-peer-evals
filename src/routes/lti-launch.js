@@ -61,10 +61,10 @@ async function launchInstructor(req, res) {
       evaluation_id: evaluation.id
     });
     evaluationSummaries.forEach(es => {
-      if(studentMap[ae.evaluatee_canvas_id]) {
+      if(studentMap[es.evaluatee_canvas_id]) {
         studentMap[es.evaluatee_canvas_id].evaluationSummary = es;
       } else {
-        console.error(`Evaluatee ${ae.evaluatee_canvas_id} not found`);
+        console.error(`Evaluatee ${es.evaluatee_canvas_id} not found`);
       }
     });
 
