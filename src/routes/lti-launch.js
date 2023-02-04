@@ -61,7 +61,11 @@ async function launchInstructor(req, res) {
       evaluation_id: evaluation.id
     });
     evaluationSummaries.forEach(es => {
-      studentMap[es.evaluatee_canvas_id].evaluationSummary = es;
+      if(studentMap[ae.evaluatee_canvas_id]) {
+        studentMap[es.evaluatee_canvas_id].evaluationSummary = es;
+      } else {
+        console.error(`Evaluatee ${ae.evaluatee_canvas_id} not found`);
+      }
     });
 
     students = Object.values(studentMap);
