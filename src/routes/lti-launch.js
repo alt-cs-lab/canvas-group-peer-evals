@@ -49,7 +49,11 @@ async function launchInstructor(req, res) {
       evaluation_id: evaluation.id
     })
     assignedEvaluations.forEach(ae => {
-      studentMap[ae.evaluator_canvas_id].assignedEvaluations.push(ae);
+      if(studentMap[ae.evaluator_canvas_id]) {
+        studentMap[ae.evaluator_canvas_id].assignedEvaluations.push(ae);
+      } else {
+        console.error(`Evaluator ${ae.evaluator_canvas_id} not found`);
+      }
     });
 
     // And provide final evaluations (when available)
