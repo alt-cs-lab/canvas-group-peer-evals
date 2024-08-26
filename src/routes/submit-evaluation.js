@@ -20,12 +20,14 @@ async function submitEvaluation(req, res) {
   // Save the completed evaluation
   const assignedEvaluation = await db.assigned_evaluations.update(req.body.id, evaluationData);
   
+  /*
   // Determine if we have enough to create a summary
   const evaluationsForEvaluatee = await db.assigned_evaluations.find({evaluatee_canvas_id: req.body.evaluatee_canvas_id});
   if(evaluationsForEvaluatee.reduce((complete, eval) => complete && eval, true)) {
     // All evaluations for this evaluatee are in - create the summary
     await createEvaluationSummary(db, evaluationsForEvaluatee);
   }
+    */
 
   res.render('partials/complete-evaluation', {assignedEvaluation});
 }
