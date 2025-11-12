@@ -47,6 +47,8 @@ CREATE TABLE IF NOT EXISTS evaluation_summaries (
 
   result_sourcedid TEXT NOT NULL,
   grade_passback_url TEXT NOT NULL,
+  canvas_assignment_id INTEGER,
+  canvas_consumer_id INTEGER,
   completed BOOLEAN DEFAULT false,
 
   discussion_score FLOAT,

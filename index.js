@@ -1,10 +1,16 @@
-require('dotenv').config();
+import "@dotenvx/dotenvx/config";
 
-const path = require('path');
-const express = require('express');
-const massive = require('massive');
-const session = require('express-session');
-const bodyParser = require('body-parser');
+import path from "path";
+import express from "express";
+import massive from "massive";
+import session from "express-session";
+
+import lti from './src/configs/lti.js';
+import assignEvaluations from "./src/routes/assign-evaluations.js";
+import submitEvaluation from "./src/routes/submit-evaluation.js";
+import generateSummaries from "./src/routes/generate-summaries.js";
+import evaluationProgress from "./src/routes/evaluation-progress.js";
+import studentEvaluation from "./src/routes/student-evaluation.js";
 
 var app = express();
 
@@ -24,7 +30,7 @@ var app = express();
 
   // Set up the proxy
   var trustProxy = process.env.TRUST_PROXY; 
-  if(trustProxy) {
+  if(trustProxy && trustProxy.length > 0 && trustProxy !== "false") {
     // The 'trust proxy' setting can either be a boolean
     // (blanket trust any proxy) or a specific ip address
     if(trustProxy === "true") app.set('trust proxy', true);
@@ -39,18 +45,21 @@ var app = express();
     cookie: {secure: true}
   }));
 
-  app.set('views', path.join(__dirname, 'src/views'));
+  app.set('views', path.join(import.meta.dirname, 'src/views'));
   app.set('view engine', 'ejs');
 
-  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(express.urlencoded({ extended: true }));
 
-  app.get('/', (req, res) => res.send("Hello"));
+  app.get('/', (req, res) => res.send("Hello from Canvas Group Peer Evals!"));
 
-  app.post('/', require('./src/middleware/verify-lti-launch'), require('./src/routes/lti-launch.js'));
-  app.post('/assign-evaluations', require('./src/routes/assign-evaluations'));
-  app.post('/submit-evaluation', require('./src/routes/submit-evaluation'));
-  
-  app.get('/generate-summaries/:id', require('./src/routes/generate-summaries'));
+  // Use /launch10 for LTI 1.0 launches
+  app.post('/', lti.routers.provider);
+  app.post('/assign-evaluations', assignEvaluations);
+  app.post('/submit-evaluation', submitEvaluation);
+  app.get('/generate-summaries/:id', generateSummaries);
+
+  app.get('/instructor/evaluation-progress', evaluationProgress);
+  app.get('/student/evaluation', studentEvaluation);
 
   app.listen(3000, () => console.log("Listening on port 3000"));
 

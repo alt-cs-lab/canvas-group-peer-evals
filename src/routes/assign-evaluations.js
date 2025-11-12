@@ -1,4 +1,4 @@
-const canvas = require("../services/canvas-api");
+import canvas from "../services/canvas-api.js";
 
 async function assignEvaluations(req, res) {
 
@@ -45,4 +45,4 @@ async function assignEvaluations(req, res) {
   res.send('Evaluations Assigned Successfully!');
 }
 
-module.exports = assignEvaluations;
+export default assignEvaluations;
