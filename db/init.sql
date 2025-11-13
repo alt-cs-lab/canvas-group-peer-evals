@@ -1,14 +1,14 @@
 CREATE TABLE IF NOT EXISTS users (
   id serial PRIMARY KEY,
-  canvas_user_id INTEGER NOT NULL UNIQUE,
+  canvas_user_id TEXT NOT NULL UNIQUE,
   name TEXT,
   email TEXT
 );
 
 CREATE TABLE IF NOT EXISTS evaluations (
   id serial PRIMARY KEY,
-  canvas_assignment_id INTEGER UNIQUE,
-  canvas_course_id INTEGER,
+  canvas_assignment_id TEXT UNIQUE,
+  canvas_course_id TEXT,
   canvas_group_category_id INTEGER,
   canvas_group_category_name TEXT
 );
@@ -17,10 +17,10 @@ CREATE TABLE IF NOT EXISTS assigned_evaluations (
   id serial PRIMARY KEY,
   evaluation_id INTEGER,
 
-  canvas_assignment_id INTEGER,
-  evaluator_canvas_id INTEGER,
+  canvas_assignment_id TEXT,
+  evaluator_canvas_id TEXT,
   evaluator_name TEXT,
-  evaluatee_canvas_id INTEGER,
+  evaluatee_canvas_id TEXT,
   evaluatee_name TEXT,
   completed BOOLEAN DEFAULT false,
 
@@ -42,12 +42,13 @@ CREATE TABLE IF NOT EXISTS assigned_evaluations (
 CREATE TABLE IF NOT EXISTS evaluation_summaries (
   id serial PRIMARY KEY,
   evaluation_id INTEGER,
-  evaluatee_canvas_id INTEGER,
+  evaluatee_canvas_id TEXT,
   evaluatee_name TEXT,
 
   result_sourcedid TEXT NOT NULL,
   grade_passback_url TEXT NOT NULL,
-  canvas_assignment_id INTEGER,
+  canvas_assignment_id TEXT,
+  canvas_assignment_name TEXT,
   canvas_consumer_id INTEGER,
   completed BOOLEAN DEFAULT false,
 

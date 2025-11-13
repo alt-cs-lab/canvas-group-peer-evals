@@ -15,10 +15,13 @@ export default async function generateSummaries(req, res) {
 
   for(var group of Object.values(groups)) {
     const completed = group.filter(an_evaluation => an_evaluation.completed);
-    createEvaluationSummary(db, completed);
+    if(completed.length > 0) {
+      createEvaluationSummary(db, completed);
+    }
   }
   
-  res.send("OK")
+  req.flash("success", "Evaluation summaries generation successful! Wait a few moments for grades to be posted back to Canvas, and then refresh this page");
+  res.redirect('/instructor/evaluation-progress');
 }
 
 

@@ -13,17 +13,18 @@
   "license": "MIT",
   "dependencies": {
     "@dotenvx/dotenvx": "^1.51.1",
-    "axios": "^1.12.2",
-    "body-parser": "^2.2.0",
+    "axios": "^1.13.2",
+    "connect-flash": "^0.1.1",
+    "connect-session-sequelize": "^8.0.2",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
     "lti-toolkit": "github:alt-cs-lab/lti-toolkit",
     "massive": "^6.11.3",
-    "oauth-1.0a": "^2.2.6",
-    "oauth1-signature": "^1.0.5",
+    "morgan": "^1.10.1",
     "sequelize": "^6.37.7",
-    "sequelize-noupdate-attributes": "^2.0.2"
+    "sequelize-noupdate-attributes": "^2.0.2",
+    "winston": "^3.18.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"

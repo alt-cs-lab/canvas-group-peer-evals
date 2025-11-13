@@ -9,6 +9,7 @@
   <body>
     <div class="container">
       <h1>Group Peer Evaluations</h1>
+      <h2><%= assignmentName %></h2>
       
       <% if(!assignedEvaluations || assignedEvaluations.length === 0) { %>
         <div class="alert alert-danger">
@@ -16,41 +17,44 @@
           believe this is a mistake, you should contact 
           your instructor.
         </div>
-      <% } %>
+      <% } else {%>
 
-      <% if(evaluationSummary.completed) { %>
-        <%- include('partials/evaluation-summary', {evaluationSummary}); %> 
-      <% } %>
-      
-      <% if(assignedEvaluations.reduce((complete, eval) => complete && eval.completed, true)) { %>
-        // evaluations are completed 
-      <% } else { %>
-        
-        <p>
-          <%= name %>, please complete the following peer evaluations for 
-          <i>each member</i> of your group. For the ratings, a <b>10</b> 
-          corresponds to the highest possible rating, and a <b>1</b> the lowest.
-        </p>
-        <p>
-          Note that a score of 8-10 will not impact your team member's grade,
-          so consider rating them at an 8 or 9 if you are satisfied with
-          their performance but they still have room to improve. 
-        </p>
-        
-        <p>
-          Once you have submitted all your evaluations and your peers
-          have evaluated you, you will be able to view a summary 
-          of their evaluations of you on this page.
-        </p>
-      <% } %>
-
-      <% assignedEvaluations.forEach(function(assignedEvaluation){ %>      
-        <% if(assignedEvaluation.completed) { %>
-            <%- include('partials/complete-evaluation', {assignedEvaluation}); %>
-        <% } else { %>
-            <%- include('partials/incomplete-evaluation', {assignedEvaluation}); %> 
+        <% if(evaluationSummary && evaluationSummary.completed) { %>
+          <%- include('partials/evaluation-summary', {evaluationSummary}); %> 
         <% } %>
-      <% }); %>
+      
+        <% if(assignedEvaluations.reduce((complete, eval) => complete && eval.completed, true)) { %>
+          <div class="alert alert-success">
+            You have completed all assigned peer evaluations.
+          </div>
+        <% } else { %>
+        
+          <p>
+            <%= name %>, please complete the following peer evaluations for 
+            <i>each member</i> of your group. For the ratings, a <b>10</b> 
+            corresponds to the highest possible rating, and a <b>1</b> the lowest.
+          </p>
+          <p>
+            Note that a score of 8-10 will not impact your team member's grade,
+            so consider rating them at an 8 or 9 if you are satisfied with
+            their performance but they still have room to improve. 
+          </p>
+          
+          <p>
+            Once you have submitted all your evaluations and your peers
+            have evaluated you, you will be able to view a summary 
+            of their evaluations of you on this page.
+          </p>
+        <% } %>
+
+        <% assignedEvaluations.forEach(function(assignedEvaluation){ %>      
+          <% if(assignedEvaluation.completed) { %>
+              <%- include('partials/complete-evaluation', {assignedEvaluation}); %>
+          <% } else { %>
+              <%- include('partials/incomplete-evaluation', {assignedEvaluation}); %> 
+          <% } %>
+        <% }); %>
+      <% } %>
     </div>
 
     <script>

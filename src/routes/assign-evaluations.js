@@ -1,7 +1,14 @@
+/**
+ * @file Route handler to assign peer evaluations
+ * @author Russell Feldhausen <russfeld@ksu.edu>
+ * @exports assignEvaluations function to handle assigning evaluations
+ */
+
 import canvas from "../services/canvas-api.js";
 
 async function assignEvaluations(req, res) {
 
+  // Extract data from request body
   const courseId = req.body.course_id;
   const assignmentId = req.body.assignment_id;
   const groupCategoryId = req.body.group_category_id;
@@ -42,7 +49,9 @@ async function assignEvaluations(req, res) {
       tiLevel: db.pgp.txMode.isolationLevel.serializable
     })
   });
-  res.send('Evaluations Assigned Successfully!');
+
+  req.flash("success", "Peer evaluations assigned successfully!");
+  res.redirect('/instructor/evaluation-progress');
 }
 
 export default assignEvaluations;

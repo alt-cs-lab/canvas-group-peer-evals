@@ -1,5 +1,12 @@
+/**
+ * @file Configuration information for LTI Toolkit
+ * @author Russell Feldhausen <russfeld@ksu.edu>
+ * @exports lti an LTI Toolkit instance configured for this app
+ */
+
 // Import Configs
 import database from "./database.js";
+import logger from "./logger.js";
 
 // Controllers
 import LTILaunch from "../routes/lti-launch.js";
@@ -9,14 +16,13 @@ import LTIToolkit from "lti-toolkit"
 
 // Initialize LTI Toolkit
 const lti = await LTIToolkit({
+  domain_name: process.env.DOMAIN_NAME,
+  logger: logger,
   database: database,
-  handleLaunch: LTILaunch,
-  postProviderGrade: () => { return false; },
-  vars: {
-    domain_name: process.env.DOMAIN_NAME,
-    admin_email: process.env.ADMIN_EMAIL,
-    deployment_name: process.env.LPP_DEPLOYMENT_NAME,
-    deployment_id: process.env.LPP_DEPLOYMENT_ID
+  provider: {
+    handleLaunch: LTILaunch,
+    key: process.env.LTI_CONSUMER_KEY,
+    secret: process.env.LTI_SHARED_SECRET
   }
 });
 

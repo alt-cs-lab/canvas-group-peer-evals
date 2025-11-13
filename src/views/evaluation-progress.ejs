@@ -10,6 +10,12 @@
     <div class="container">
       
       <h1>Group Peer Evaluation Assignment Progress</h1>
+
+      <% if(success && success.length > 0) { %>
+          <div class="alert alert-success">
+            <%= success %>
+          </div>
+      <% } %>
       
       <% students.forEach(function(student){ %>
         <div>

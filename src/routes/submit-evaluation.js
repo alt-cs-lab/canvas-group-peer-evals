@@ -1,6 +1,3 @@
-// import axios from 'axios';
-// import { createEvaluationSummary } from '../services/grading.js';
-
 async function submitEvaluation(req, res) {
   const db = req.app.get('db');
 

@@ -1,3 +1,5 @@
+import canvas from "../services/canvas-api.js";
+
 async function evaluationProgress(req, res) {
   const courseId = req.session.courseId;
   const assignmentId = req.session.assignmentId;
@@ -41,7 +43,7 @@ async function evaluationProgress(req, res) {
 
     students = Object.values(studentMap);
 
-    res.render('evaluation-progress', {evaluation, assignedEvaluations, students});
+    res.render('evaluation-progress', {evaluation, assignedEvaluations, students, success: req.flash("success")});
   } else {
     // We need the user to select a group category
     const groupCategories = await canvas.getGroupCategories(courseId);
