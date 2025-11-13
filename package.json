@@ -1,24 +1,35 @@
 {
   "name": "group-peer-evals",
   "version": "1.0.0",
+  "type": "module",
   "description": "A Canvas LTI Tool for conducting group peer evaluations.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nathan H. Bean",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.25.0",
-    "body-parser": "^1.20.0",
-    "dotenv": "^16.0.2",
-    "ejs": "^3.1.6",
-    "express": "^4.17.2",
-    "express-session": "^1.17.3",
-    "ims-lti": "github:alt-cs-lab/ims-lti",
-    "massive": "^6.10.2",
-    "oauth-1.0a": "^2.2.6",
-    "oauth1-signature": "^1.0.5"
+    "@dotenvx/dotenvx": "^1.51.1",
+    "axios": "^1.13.2",
+    "connect-flash": "^0.1.1",
+    "connect-session-sequelize": "^8.0.2",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "lti-toolkit": "github:alt-cs-lab/lti-toolkit",
+    "massive": "^6.11.3",
+    "morgan": "^1.10.1",
+    "sequelize": "^6.37.7",
+    "sequelize-noupdate-attributes": "^2.0.2",
+    "winston": "^3.18.3"
+  },
+  "overrides": {
+    "pg-promise": "^11.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }

@@ -1,6 +1,3 @@
-const axios = require('axios');
-const {createEvaluationSummary} = require('../services/grading');
-
 async function submitEvaluation(req, res) {
   const db = req.app.get('db');
 
@@ -32,4 +29,4 @@ async function submitEvaluation(req, res) {
   res.render('partials/complete-evaluation', {assignedEvaluation});
 }
 
-module.exports = submitEvaluation;
+export default submitEvaluation;

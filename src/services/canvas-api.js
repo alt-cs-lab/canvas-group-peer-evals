@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 const token = process.env.CANVAS_ACCESS_TOKEN;
 const canvasHostname = process.env.CANVAS_HOST
 
@@ -34,4 +34,4 @@ async function getGroupsInGroupCategory(groupCategoryId) {
   return groups;
 }
 
-module.exports = {getCourseStudents, getGroupCategories, getGroupsInGroupCategory};
+export default {getCourseStudents, getGroupCategories, getGroupsInGroupCategory};
